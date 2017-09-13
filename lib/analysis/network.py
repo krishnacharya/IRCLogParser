@@ -434,8 +434,7 @@ def degree_analysis_on_graph(nx_graph, date=None, directed = True):
         nx_graph (nx_object): object to perform analysis on
     Returns:
         null
-    """
-    
+    """    
     def nodes_with_degree_populator(degree_values, label): 
         nodes_with_degree = []
         if len(degree_values):
@@ -452,7 +451,7 @@ def degree_analysis_on_graph(nx_graph, date=None, directed = True):
         key_list = ""
         for key in degree_dict:
             if degree_dict[key] == degree:
-                key_list += (key + ", ")
+                key_list += (str(key) + ", ")
         return key_list
 
     degree_map = {} # will map a string(eg "out", "in" , "all") to nx_graph.out_degree() etc
@@ -516,7 +515,6 @@ def degree_analysis_on_graph(nx_graph, date=None, directed = True):
         raw_degree = [str(date)]
         degree_map = {"all":nx_graph.degree()}
         raw_degree, nodes_with_degree_undirected = raw_node_append(nodes_with_degree_undirected, raw_degree, "all")
-
         return  {
             "degree":{
                 "formatted_for_csv" : nodes_with_degree_undirected,
